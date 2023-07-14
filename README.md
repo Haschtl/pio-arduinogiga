@@ -24,6 +24,28 @@ The `platform.py` file can be found in `~/.platformio/platforms/ststm32/platform
 
 When flashing the `Arduino GIGA` using the `Arduino IDE`, the board is set to `bootloader mode` automatically. Using this board-definition in platformio will not do this. We need to set it into `bootloader mode` manually for now by double-pressing the `RST`-Button (Refer to the [cheat-sheet](https://docs.arduino.cc/tutorials/giga-r1-wifi/cheat-sheet#mbed-os))
 
+## Troubleshooting
+
+Sometimes the Arduino GIGA does not respond after flashing, it's not even possible to enter `bootloader_mode` by double-pressing the `RST`-Button. Workaround for this is to enter `DFU-Mode` by holding the `BOOT0`-button while powering the Arduino GIGA and then flash some sketch using the Arduino IDE, e.g. 
+
+```
+#include <Arduino.h>
+#include <Serial.h>
+#define LED LED_BUILTIN
+
+void setup() {
+  pinMode(LED, OUTPUT);
+  Serial.begin(9600);
+}
+void loop() {
+  digitalWrite(LED, digitalRead(LED) ^ 1); // toggle
+  Serial.println("Test");
+  delay(1000);
+}
+```
+
+After this, it's possible to enter `bootloader_mode` again.
+
 ## References
 
 - [Custom board definition for Portenta X8](https://github.com/maxgerhardt/pio-portentax8/tree/main)
