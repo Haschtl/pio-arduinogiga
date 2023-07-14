@@ -24,7 +24,7 @@ The `platform.py` file can be found in `~/.platformio/platforms/ststm32/platform
 
 When flashing the `Arduino GIGA` using the `Arduino IDE`, the board is set to `bootloader mode` automatically. Using this board-definition in platformio will not do this. We need to set it into `bootloader mode` manually for now by double-pressing the `RST`-Button (Refer to the [cheat-sheet](https://docs.arduino.cc/tutorials/giga-r1-wifi/cheat-sheet#mbed-os))
 
-## Troubleshooting
+## Upload Troubleshooting
 
 Sometimes the Arduino GIGA does not respond after flashing, it's not even possible to enter `bootloader_mode` by double-pressing the `RST`-Button. Workaround for this is to enter `DFU-Mode` by holding the `BOOT0`-button while powering the Arduino GIGA and then flash some sketch using the Arduino IDE, e.g. 
 
@@ -45,6 +45,10 @@ void loop() {
 ```
 
 After this, it's possible to enter `bootloader_mode` again.
+
+### Alternative workaround
+
+A more fail-safe workaround is to use the `arduino-cli` to upload the `.bin` file created by platformio: `arduino-cli upload -b arduino:mbed_giga:giga -i .pio/build/giga/firmware.bin`
 
 ## References
 
