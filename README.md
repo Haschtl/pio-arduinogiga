@@ -20,6 +20,9 @@ if board.startswith(("portenta", "opta", "nicla_vision", "giga"))
 
 The `platform.py` file can be found in `~/.platformio/platforms/ststm32/platform.py` on linux.
 
+## Uploading sketch
+
+When flashing the `Arduino GIGA` using the `Arduino IDE`, the board is set to `bootloader mode` automatically. Using this board-definition in platformio will not do this. We need to set it into `bootloader mode` manually for now by double-pressing the `RST`-Button (Refer to the [cheat-sheet](https://docs.arduino.cc/tutorials/giga-r1-wifi/cheat-sheet#mbed-os))
 
 ## References
 

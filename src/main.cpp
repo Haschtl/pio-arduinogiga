@@ -1,13 +1,16 @@
 #include <Arduino.h>
-#include <SerialRPC.h>
-#define LED LED_BLUE
+#include <Serial.h>
+// #include <SerialRPC.h>
+#define LED LED_BUILTIN
 
 void setup() {
   pinMode(LED, OUTPUT);
-  SerialRPC.begin();
+  Serial.begin(9600);
+  // SerialRPC.begin();
 }
 void loop() {
   digitalWrite(LED, digitalRead(LED) ^ 1); // toggle
-  SerialRPC.println("Test");
+  Serial.println("Test");
+  // SerialRPC.println("Test");
   delay(1000);
 }
